@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.kerneldev'
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-data-rest')
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation platform('software.amazon.awssdk:bom:2.10.45')
+	implementation 'software.amazon.awssdk:sns'
+	implementation 'software.amazon.awssdk:apache-client'
+	implementation 'software.amazon.awssdk:ses'
+	implementation 'com.sun.mail:javax.mail'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-messaging', version: '2.2.1.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-autoconfigure', version: '2.2.1.RELEASE'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+test {
+	useJUnitPlatform()
+}
