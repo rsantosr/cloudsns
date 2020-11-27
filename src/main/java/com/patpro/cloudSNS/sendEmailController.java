@@ -135,7 +135,7 @@ public class sendEmailController {
 
         }
 
-        mensaje=mensaje+"\n"+"Estimado gerente, se le recomienda realizar un pedido con los productos indicados";
+        mensaje=mensaje+"\n"+"Estimado administrador, se le recomienda realizar un pedido con los productos indicados";
         System.out.println(mensaje);
 
        // final String msg = "Los productos han llegado a su stock mínimo!";
