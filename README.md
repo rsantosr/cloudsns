@@ -10,6 +10,11 @@ cloud.aws.credentials.secretKey=AWSSecretKey
 cloud.aws.region.static=us-east-1
 cloud.aws.stack.auto=false
  ```
+* Ejecutar en la terminal
+`$ gradle assemble`
+
+* Ejecutar en la terminal
+`$ java -jar build/libs/cloudSNS-1.0.jar`
 
 #### Creación de Tópico en AWS
 * Al ejecutar el siguiente comando se creará el topico en AWS y generará `Topic ARN`, código que usaremos para suscribir emails
