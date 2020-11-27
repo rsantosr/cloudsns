@@ -107,7 +107,7 @@ public class sendEmailController {
         return "Subscription ARN request is pending. To confirm the subscription, check your email.";
     }
 
-    @RequestMapping("/sendEmail")
+    @RequestMapping("/generateAlert")
     private String sendEmail(@RequestParam("arn") String arn) throws URISyntaxException {
 
         String mensaje="Alerta! Los siguientes productos han llegado o están por debajo del stock mínimo permitido\n\n";
@@ -135,7 +135,7 @@ public class sendEmailController {
 
         }
 
-        mensaje=mensaje+"\n"+"Por favor, ir creando su pedido ";
+        mensaje=mensaje+"\n"+"Estimado gerente, se le recomienda realizar un pedido con los productos indicados";
         System.out.println(mensaje);
 
        // final String msg = "Los productos han llegado a su stock mínimo!";
