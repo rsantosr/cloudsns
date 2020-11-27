@@ -73,4 +73,5 @@ ENTRYPOINT ["java","-Duser.timezone=America/Lima","-jar","cloudSNS-1.0.jar"] EXP
 `$ docker image build -t cloudsns -f DockerFile .`
 
 * Ejecuta la imagen
+
 `$ docker run --rm -it -p 8084:8084 cloudsns`
