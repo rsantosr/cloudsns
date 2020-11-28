@@ -1,6 +1,22 @@
 ## Cloud SNS - Proyecto de investigación CLOUD
 
-#### Ejecución de proyecto local
+### I.- Obtener credenciales de AWS
+Al igual que con cualquier servicio de AWS, se necesita su ID y secret key. Podría ser a nivel de cuenta AWS, pero se recomienda crear un usuario desde `Identity and Access Management (IAM)`. 
+
+## Obteniendo ID y secretKey de la cuenta AWS
+
+* Inicie sesión en su consola de AWS y visite la página " Mis credenciales de seguridad " que aparece en el menú desplegable de su cuenta.
+* Expanda la pestaña " Claves de acceso (ID de clave de acceso y clave de acceso secreta) " y haga clic en " Crear nueva clave de acceso ".
+* Descargue su archivo de credenciales y guárdelo en un lugar seguro. Nadie debería tener acceso a este archivo, ya que entonces también tendrán autorización completa para usar su cuenta de AWS.
+
+## Obteniendo ID y secretKey de Identity and Access Management (IAM)
+* Crear su cuenta de usuario con los permisos de administrador
+* Ingresa a los detalles de tu usuario
+* Clickea el tab Credenciales de seguridad
+* Crear una nueva clave de acceso
+* Te mostrará un pop up para copiar tanto el ID de clave de acceso como la clave de acceso secreta. 
+
+###II.- Ejecución de proyecto local
 * Configuración de variables en `aplication.properties`:
 
 ```
@@ -41,7 +57,7 @@ Notas:
 * `getProductos`: Provee la información de los productos registrados. Para efecto de la POC, presentará un arreglo con información de los productos como Nombre del producto, stock mínimo, stock Actual.
 * `generateAlert`: Evalúa que productos se encuentran en su límite de stock o están por debajo de el y manda el reporte vía AWS SNS. 
 
-#### En Docker
+### III. Ejecución desplegando una imagen con Docker
 
 ##### Ejecución de proyecto a partir de una imagen creada con Docker
 * `DockerFile`:
