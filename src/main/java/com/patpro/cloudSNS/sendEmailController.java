@@ -35,8 +35,6 @@ public class sendEmailController {
     public void setSecretkey(String key) {
         SECRET_KEY = key;
     }
-
-
     public static String REGION_KEY;
     @Value("${cloud.aws.region.static}")
     public void setRegionkey(String key) {

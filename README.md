@@ -36,7 +36,10 @@ cloud.aws.stack.auto=false
 ### III. Ejecución desplegando una imagen con Docker
 
 ##### Ejecución de proyecto a partir de una imagen creada con Docker
+Para ejecutar en docker, debes crear el archivo DockerFile en la raíz del proyecto y agregar lo siguiente:
+
 * `DockerFile`:
+
 ```
 FROM openjdk:8
 ENV APP_HOME=/Apps/SpringBootDemo
@@ -51,20 +54,7 @@ RUN mkdir -p $APP_HOME/log/
 ENTRYPOINT ["java","-Duser.timezone=America/Lima","-jar","cloudSNS-1.0.jar"] EXPOSE 8084
 ```
 ##### Comandos
-* Para ejecutar en docker, debes crear el archivo DockerFile en la raíz del proyecto y agregar lo siguiente:
-```
-FROM openjdk:8
-ENV APP_HOME=/Apps/SpringBootDemo
-ENV server.port 8084
-ENV cloud.aws.credentials.accessKey AWSKey
-ENV cloud.aws.credentials.secretKey AWSSecretKey
-ENV cloud.aws.region.static us-east-1
-ENV cloud.aws.stack.auto false
-WORKDIR $APP_HOME
-COPY /build/libs/cloudSNS-1.0.jar $APP_HOME/cloudSNS-1.0.jar
-RUN mkdir -p $APP_HOME/log/
-ENTRYPOINT ["java","-Duser.timezone=America/Lima","-jar","cloudSNS-1.0.jar"] EXPOSE 8084
-```
+
 * Genera la imagen 
 
 `$ docker image build -t cloudsns -f DockerFile .`
@@ -99,5 +89,9 @@ Notas:
 
 #### Hemos creado los siguientes endpoints
 * `getProductos`: Provee la información de los productos registrados. Para efecto de la POC, presentará un arreglo con información de los productos como Nombre del producto, stock mínimo, stock Actual.
+
+`$ curl http://localhost:8084/getProductos`
+
 * `generateAlert`: Evalúa que productos se encuentran en su límite de stock o están por debajo de el y manda el reporte vía AWS SNS. 
- 
+
+`$ curl http://localhost:8084/generateAlert?arn=arn:aws:sns:us-east-1:917477843001:san-juan-sac`
