@@ -87,7 +87,7 @@ Notas:
 * Puedes suscribir de 1 a más emails
 * Debes acceder al correo suscrito y confirmar la suscripción
 
-#### Hemos creado los siguientes endpoints
+### V.- Vista de productos y envío de email
 * `getProductos`: Provee la información de los productos registrados. Para efecto de la POC, presentará un arreglo con información de los productos como Nombre del producto, stock mínimo, stock Actual.
 
 `$ curl http://localhost:8084/getProductos`
