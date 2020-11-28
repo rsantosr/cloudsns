@@ -9,7 +9,7 @@ Al igual que con cualquier servicio de AWS, se necesita su ID y secret key. Podr
 * Expanda la pestaña " Claves de acceso (ID de clave de acceso y clave de acceso secreta) " y haga clic en " Crear nueva clave de acceso ".
 * Descargue su archivo de credenciales y guárdelo en un lugar seguro. Nadie debería tener acceso a este archivo, ya que entonces también tendrán autorización completa para usar su cuenta de AWS.
 
-## Obteniendo ID y secretKey de Identity and Access Management (IAM)
+## Obteniendo ID y secretKey desde: Identity and Access Management (IAM)
 * Crear su cuenta de usuario con los permisos de administrador
 * Ingresa a los detalles de tu usuario
 * Clickea el tab Credenciales de seguridad
