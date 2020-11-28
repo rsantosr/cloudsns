@@ -16,7 +16,7 @@ Al igual que con cualquier servicio de AWS, se necesita su ID y secret key. Podr
 * Crear una nueva clave de acceso
 * Te mostrará un pop up para copiar tanto el ID de clave de acceso como la clave de acceso secreta. 
 
-### I.- Ejecución de proyecto local
+### II.- Ejecución de proyecto local
 * Configuración de variables en `aplication.properties`:
 
 ```
