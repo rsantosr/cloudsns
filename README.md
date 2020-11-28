@@ -16,7 +16,7 @@ Al igual que con cualquier servicio de AWS, se necesita su ID y secret key. Podr
 * Crear una nueva clave de acceso
 * Te mostrará un pop up para copiar tanto el ID de clave de acceso como la clave de acceso secreta. 
 
-###II.- Ejecución de proyecto local
+### I.- Ejecución de proyecto local
 * Configuración de variables en `aplication.properties`:
 
 ```
@@ -32,30 +32,6 @@ cloud.aws.stack.auto=false
 * Ejecutar en la terminal
 `$ java -jar build/libs/cloudSNS-1.0.jar`
 
-#### Creación de Tópico en AWS
-* Al ejecutar el siguiente comando se creará el topico en AWS y generará `Topic ARN`, código que usaremos para suscribir emails
-
-```
-$ curl http://localhost:8084/createTopic?topic_name=san-juan-sac
-Topic ARN: arn:aws:sns:us-east-1:123456789:san-juan-sac
-```
-Guardar el código del tópico arn: `arn:aws:sns:us-east-1:123456789:san-juan-sac`
-
-#### Suscribir a los correos a quienes desees les llegue el mensaje
-* Con el siguiente commando suscribes al correo que desees se envíe el email
-* Usaremos el código del tópico arn
-
-```
-$ curl http://localhost:8084/addSubscribers?arn=arn:aws:sns:us-east-1:123456789:san-juan-sac&email=correo@gmail.com
-Subscription ARN request is pending. To confirm the subscription, check your email.
-```
-Notas: 
-* Puedes suscribir de 1 a más emails
-* Debes acceder al correo suscrito y confirmar la suscripción
-
-#### Hemos creado los siguientes endpoints
-* `getProductos`: Provee la información de los productos registrados. Para efecto de la POC, presentará un arreglo con información de los productos como Nombre del producto, stock mínimo, stock Actual.
-* `generateAlert`: Evalúa que productos se encuentran en su límite de stock o están por debajo de el y manda el reporte vía AWS SNS. 
 
 ### III. Ejecución desplegando una imagen con Docker
 
@@ -96,3 +72,32 @@ ENTRYPOINT ["java","-Duser.timezone=America/Lima","-jar","cloudSNS-1.0.jar"] EXP
 * Ejecuta la imagen
 
 `$ docker run --rm -it -p 8084:8084 cloudsns`
+
+
+### IV. Creación de tópico y suscripción de emails
+
+#### Creación de Tópico en AWS
+* Al ejecutar el siguiente comando se creará el topico en AWS y generará `Topic ARN`, código que usaremos para suscribir emails
+
+```
+$ curl http://localhost:8084/createTopic?topic_name=san-juan-sac
+Topic ARN: arn:aws:sns:us-east-1:123456789:san-juan-sac
+```
+Guardar el código del tópico arn: `arn:aws:sns:us-east-1:123456789:san-juan-sac`
+
+#### Suscribir a los correos a quienes desees les llegue el mensaje
+* Con el siguiente commando suscribes al correo que desees se envíe el email
+* Usaremos el código del tópico arn
+
+```
+$ curl http://localhost:8084/addSubscribers?arn=arn:aws:sns:us-east-1:123456789:san-juan-sac&email=correo@gmail.com
+Subscription ARN request is pending. To confirm the subscription, check your email.
+```
+Notas: 
+* Puedes suscribir de 1 a más emails
+* Debes acceder al correo suscrito y confirmar la suscripción
+
+#### Hemos creado los siguientes endpoints
+* `getProductos`: Provee la información de los productos registrados. Para efecto de la POC, presentará un arreglo con información de los productos como Nombre del producto, stock mínimo, stock Actual.
+* `generateAlert`: Evalúa que productos se encuentran en su límite de stock o están por debajo de el y manda el reporte vía AWS SNS. 
+ 
